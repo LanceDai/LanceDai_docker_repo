@@ -45,4 +45,4 @@ done
 
 git add --all
 git commit -m "add k8s images and Dockerfile in `date`"
-git pull -u origin master
+git push -u origin master
