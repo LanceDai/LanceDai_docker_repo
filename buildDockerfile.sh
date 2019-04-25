@@ -39,6 +39,9 @@ for image in ${!images[*]}; do
         echo "${image}文件夹已经存在"
     fi
     cd ${image}
+    rm -rf ./${images[$image]}
+    mkdir ${images[$image]}
+    cd ${images[$image]}
     rm -rf ./Dockerfile
     echo "FROM ${GCR_URL}/${image}:${images[$image]}" >> Dockerfile 
 done
