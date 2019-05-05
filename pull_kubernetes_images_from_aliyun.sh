@@ -11,7 +11,7 @@ KUBE_ETCD_VERSION=3.3.10
 KUBE_COREDNS_VERSION=1.3.1
 
 GCR_URL=k8s.gcr.io
-ALIYUN_URL=registry.cn-hangzhou.aliyuncs.com/lance_dai/
+ALIYUN_URL=registry.cn-hangzhou.aliyuncs.com/lance_dai
 
 images=(
   kube-apiserver:${KUBE_VERSION}
@@ -22,11 +22,10 @@ images=(
   etcd:${KUBE_ETCD_VERSION}
   coredns:${KUBE_COREDNS_VERSION})
 
-
-for imageName in ${images[@]} ; do
-  docker pull ${ALIYUN_URL}/${imageName}
-  docker tag  ${ALIYUN_URL}/${imageName} ${GCR_URL}/${imageName}
-  docker rmi ${ALIYUN_URL}/${imageName}
+for image in ${images[@]}; do
+  echo "docker pull ${ALIYUN_URL}/${image}"
+  echo "docker tag ${ALIYUN_URL}/${image} ${GCR_URL}/${image}"
+  echo "docker rmi ${ALIYUN_URL}/${image}"
 done
 
 docker images
