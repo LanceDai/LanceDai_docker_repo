@@ -1,24 +1,27 @@
 #!/bin/bash
 
+source "./source.sh"
 
-source './source.sh'
-originDir=${PWD}
-
-for image in ${!images[*]}; do
+for image in ${images[@]}; do
     echo "cd ${originDir}"
     if [ ! -d "./${image}/" ];then
         echo "mkdir ${image}"
     else
-        echo "${image}文件夹已经存在"
+        echo "echo '${image}文件夹已经存在'"
     fi
     echo "cd ${image}"
-    echo "rm -rf ./${images[$image]}"
-    echo "mkdir ${images[$image]}"
-    echo "cd ${images[$image]}"
+    echo "rm -rf ./${versionMap[$image]}"
+    echo "mkdir ${versionMap[$image]}"
+    echo "cd ${versionMap[$image]}"
     echo "rm -rf ./Dockerfile"
-    echo "echo "FROM ${GCR_URL}/${image}:${images[$image]}" >> Dockerfile"
+    echo "echo "FROM ${hubAddrMap[${image}]}/${image}:${versionMap[${image}]}" >> Dockerfile"
 done
 
 # git add --all
 # git commit -m "add k8s images and Dockerfile in `date`"
+
+# # 上传至阿里云code
 # git push -u origin master
+
+# # 上传至GitHub
+# git push -u github_origin master
