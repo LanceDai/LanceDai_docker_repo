@@ -15,6 +15,7 @@ KUBE_VERSION=v1.14.1
 KUBE_PAUSE_VERSION=3.1
 KUBE_ETCD_VERSION=3.3.10
 KUBE_COREDNS_VERSION=1.3.1
+KUBERNETES_DASHBOARD_AMD64_VERSION=v1.10.1
 
 GCR_URL=k8s.gcr.io
 
@@ -27,7 +28,8 @@ images=(
     [kube-proxy]=${KUBE_VERSION}
     [pause]=${KUBE_PAUSE_VERSION}
     [etcd]=${KUBE_ETCD_VERSION}
-    [coredns]=${KUBE_COREDNS_VERSION})
+    [coredns]=${KUBE_COREDNS_VERSION}
+    [kubernetes-dashboard-amd64]=${KUBERNETES_DASHBOARD_AMD64_VERSION})
 
 originDir=${PWD}
 
