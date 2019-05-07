@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 set -e
 
 # k8s.gcr.io/kube-apiserver:v1.14.1
@@ -10,6 +9,8 @@ set -e
 # k8s.gcr.io/pause:3.1
 # k8s.gcr.io/etcd:3.3.10
 # k8s.gcr.io/coredns:1.3.1
+# k8s.gcr.io/kubernetes-dashboard-amd64:v1.10.1
+
 
 KUBE_VERSION=v1.14.1
 KUBE_PAUSE_VERSION=3.1
@@ -32,22 +33,3 @@ images=(
     [kubernetes-dashboard-amd64]=${KUBERNETES_DASHBOARD_AMD64_VERSION})
 
 originDir=${PWD}
-
-for image in ${!images[*]}; do
-    cd ${originDir}
-    if [ ! -d "./${image}/" ];then
-        mkdir ${image}
-    else
-        echo "${image}文件夹已经存在"
-    fi
-    cd ${image}
-    rm -rf ./${images[$image]}
-    mkdir ${images[$image]}
-    cd ${images[$image]}
-    rm -rf ./Dockerfile
-    echo "FROM ${GCR_URL}/${image}:${images[$image]}" >> Dockerfile 
-done
-
-git add --all
-git commit -m "add k8s images and Dockerfile in `date`"
-git push -u github_origin master
