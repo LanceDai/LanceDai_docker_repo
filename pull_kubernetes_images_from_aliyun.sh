@@ -6,10 +6,10 @@ source "./source.sh"
 
 ALIYUN_URL=registry.cn-hangzhou.aliyuncs.com/lance_dai
 
-for image in ${images[@]}; do
-  docker pull ${ALIYUN_URL}/${image}
-  docker tag ${ALIYUN_URL}/${image} ${GCR_URL}/${image}
-  docker rmi ${ALIYUN_URL}/${image}
+for image in ${!images[*]}; do
+  docker pull ${ALIYUN_URL}/${image}:${images[$image]}
+  docker tag ${ALIYUN_URL}/${image}:${images[$image]} ${GCR_URL}/${image}:${images[$image]}
+  docker rmi ${ALIYUN_URL}/${image}:${images[$image]}
 done
 
 docker images
