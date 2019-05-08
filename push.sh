@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sh ./mirrors/buildDockerfile.sh
+./mirrors/buildDockerfile.sh
 
 git add --all
 git commit -m "add k8s images and Dockerfile in `date`"
