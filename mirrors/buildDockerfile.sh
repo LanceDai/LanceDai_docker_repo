@@ -1,7 +1,12 @@
 #!/bin/bash
 
-source "./source.sh"
 
+loc=`pwd`
+if [ ${loc##*/} = 'docker-repo' ]; then
+    source "./mirrors/source.sh"
+else
+    source "./source.sh"
+fi
 for image in ${images[@]}; do
     cd ${originDir}
     if [ ! -d "./${image}/" ];then

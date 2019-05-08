@@ -6,7 +6,16 @@ declare -A hubAddrMap
 declare -A versionMap
 declare -A images
 
-for line in `cat './source.txt'`
+loc=`pwd`
+if [ ${loc##*/} = 'docker-repo' ]; then
+    filename="./mirrors/source.txt"
+    originDir="${PWD}/mirrors"
+else
+    filename="./source.txt"
+    originDir=${PWD}
+fi
+
+for line in `cat ${filename}`
 do
     hubAddr=${line%/*}
     imageName=${line#*/}
@@ -18,4 +27,3 @@ do
     images[${#images[@]}]=${imageName}
 done
 
-originDir=${PWD}
