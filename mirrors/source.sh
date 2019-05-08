@@ -6,7 +6,7 @@ declare -A hubAddrMap
 declare -A versionMap
 declare -A images
 
-for line in `cat 'source.txt'`
+for line in `cat './source.txt'`
 do
     hubAddr=${line%/*}
     imageName=${line#*/}
