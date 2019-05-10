@@ -37,6 +37,14 @@
      ```
 
      会自动构建相应的Dockerfile
+     
+     确保登录阿里云后, 可从阿里云拉取镜像
+     
+     ```bash
+     ./pull_images_from_aliyun.sh
+     ```
+     
+     脚本会自动拉取source.txt所记载的全部脚本,并重命名会原来的名字,达到拉取国外镜像的目的
 
 ### personal:
 
