@@ -3,7 +3,7 @@
 ./mirrors/buildDockerfile.sh
 
 git add --all
-git commit -m "add k8s images and Dockerfile in `date`"
+git commit -m "update in `date`"
 
 # 上传至阿里云code
 git push -u origin master
