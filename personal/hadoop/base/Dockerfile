@@ -15,8 +15,8 @@ RUN apt-get update -y && \
 # 安装Hadoop
 # hadoop版本
 # export HADOOP_VERSION=hadoop-2.6.0-cdh5.7.0
-#ENV HADOOP_VERSION=2.6.0-cdh5.16.1
-ENV HADOOP_VERSION=2.6.0-cdh5.7.0
+ENV HADOOP_VERSION=2.6.0-cdh5.16.1
+# ENV HADOOP_VERSION=2.6.0-cdh5.7.0
 
 # 下载速度过慢
 #RUN wget http://archive.cloudera.com/cdh5/cdh/5/${HADOOP_VERSION}.tar.gz

@@ -59,7 +59,10 @@ service ssh start
 # 防止没取到,加一个x
 echo "args[1] = $1"
 if [[ "$1"x == "start-all.sh"x ]]; then
-    hdfs namenode -format
+    if [ "`ls -A ${HDFS_NAMENODE_DIR}`" = "" ]; then
+      hdfs namenode -format
+    fi
+    echo "namenode format ok"
     sh -c "$1"
 fi
 echo "hadoop start ok"
